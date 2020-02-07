@@ -14,9 +14,14 @@ public class Invoice {
 	}
 
 	public void addProduct(Product product, Integer quantity) {
-		for (int i = 1; i <= quantity; i++) {
-			products.add(product);
+		if (quantity <= 0) {
+			throw new IllegalArgumentException("Product quantity cannot be zero or les.");
+		} else {
+			for (int i = 1; i <= quantity; i++) {
+				products.add(product);
+			}
 		}
+
 	}
 
 	public BigDecimal getSubtotal() {
