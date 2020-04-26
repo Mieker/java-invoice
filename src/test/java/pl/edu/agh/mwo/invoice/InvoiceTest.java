@@ -104,4 +104,11 @@ public class InvoiceTest {
     public void testInvoiceWithNegativeQuantity() {
         invoice.addProduct(new DairyProduct("Zsiadle mleko", new BigDecimal("5.55")), -1);
     }
+    
+    @Test
+    public void testTwoInvoicesHaveConsequentNumbers() {
+    	int number = invoice.getNumber();
+    	int number2 = new Invoice().getNumber();
+    	Assert.assertEquals(number, number2 - 1);
+    }
 }
