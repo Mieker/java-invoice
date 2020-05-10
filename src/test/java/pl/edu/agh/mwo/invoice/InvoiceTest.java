@@ -117,7 +117,7 @@ public class InvoiceTest {
     @Test
     public void testInvoiceProperlyPrintInvoiceNumber() {
         String printedInvoice = invoice.printInvoice();
-        Assert.assertEquals(Character.getNumericValue((printedInvoice.charAt(0))), invoice.getNumber());
+        Assert.assertEquals(invoice.getNumber(), Character.getNumericValue((printedInvoice.charAt(0))));
     }
     
     @Test
@@ -135,6 +135,6 @@ public class InvoiceTest {
         invoice.addProduct(new DairyProduct("Maslo", new BigDecimal("5.49")), 3);
         invoice.addProduct(new OtherProduct("Gazetka", new BigDecimal(9.99)));
         String printedInvoice = invoice.printInvoice();
-        Assert.assertEquals(Character.getNumericValue((printedInvoice.charAt(printedInvoice.length()-1))), 4);
+        Assert.assertEquals(4, Character.getNumericValue((printedInvoice.charAt(printedInvoice.length()-1))));
     }
 }

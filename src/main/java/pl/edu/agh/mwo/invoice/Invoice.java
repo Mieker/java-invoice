@@ -55,6 +55,8 @@ public class Invoice {
 
     public String printInvoice() {
         // TODO Auto-generated method stub
-        return null;
+        String invoiceToPrint = "";
+        invoiceToPrint += Integer.toString(this.getNumber());
+        return invoiceToPrint;
     }
 }
