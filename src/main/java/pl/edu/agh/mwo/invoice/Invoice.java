@@ -72,7 +72,7 @@ public class Invoice {
                     product.getPrice() + " PLN", "|", product.getPrice() + " PLN");
             invoiceToPrint += "\n" + productInfoLine;
         }
-        invoiceToPrint += "\n\n" + countProductsQuantitySummary();
+        invoiceToPrint += "\n\nLiczba pozycji: " + countProductsQuantitySummary();
 
         return invoiceToPrint;
     }
