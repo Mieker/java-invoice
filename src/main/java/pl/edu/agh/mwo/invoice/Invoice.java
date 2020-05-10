@@ -63,13 +63,13 @@ public class Invoice {
 
     public String printInvoice() {
         String invoiceToPrint = "";
-        String head = String.format("%16s %10s %15s %13s", "NAZWA       |", "ILOSC   |", "CENA NETTO   |",
-                "CENA BRUTTO ");
+        String head = String.format("%16s %10s %15s %13s", "NAZWA       |", "ILOSC   |",
+                "CENA NETTO   |", "CENA BRUTTO ");
         invoiceToPrint += Integer.toString(this.getNumber()) + "\n\n" + head;
         for (Product product : products.keySet()) {
-            String productInfoLine = String.format("%-14s %s %8s %s %13s %s %13s", product.getName(), "|",
-                    products.get(product) + " szt.", "|", product.getPrice() + " PLN", "|",
-                    product.getPrice() + " PLN");
+            String productInfoLine = String.format("%-14s %s %8s %s %13s %s %13s",
+                    product.getName(), "|", products.get(product) + " szt.", "|",
+                    product.getPrice() + " PLN", "|", product.getPrice() + " PLN");
             invoiceToPrint += "\n" + productInfoLine;
         }
         invoiceToPrint += "\n\n" + countProductsQuantitySummary();
