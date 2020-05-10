@@ -124,10 +124,8 @@ public class InvoiceTest {
     public void testInvoiceProperlyPrintAddedProduct() {
         invoice.addProduct(new TaxFreeProduct("Pilka", new BigDecimal("21.99")), 2);
         String printedInvoice = invoice.printInvoice();
-        // tabel structure:
-        // name 15marks | quantity 10marks | net unit price 15marks | gross unit price 14 marks
         Assert.assertTrue(printedInvoice.contains("   NAZWA       |  ILOSC   |  CENA NETTO   |  CENA BRUTTO "
-                + "n/Pilka          |   2 szt. |     21.99 PLN |     21.99 PLN"));
+                + "\nPilka          |   2 szt. |     21.99 PLN |     21.99 PLN"));
     }
     
     @Test
