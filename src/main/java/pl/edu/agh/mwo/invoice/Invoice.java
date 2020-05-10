@@ -52,4 +52,9 @@ public class Invoice {
 
         return number;
     }
+
+    public String printInvoice() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

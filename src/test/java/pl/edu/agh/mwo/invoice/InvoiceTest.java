@@ -1,5 +1,7 @@
 package pl.edu.agh.mwo.invoice;
 
+import static org.junit.Assert.assertTrue;
+
 import java.math.BigDecimal;
 
 import org.hamcrest.Matchers;
@@ -110,5 +112,29 @@ public class InvoiceTest {
     	int number = invoice.getNumber();
     	int number2 = new Invoice().getNumber();
     	Assert.assertEquals(number, number2 - 1);
+    }
+    
+    @Test
+    public void testInvoiceProperlyPrintInvoiceNumber() {
+        String printedInvoice = invoice.printInvoice();
+        Assert.assertEquals(Character.getNumericValue((printedInvoice.charAt(0))), invoice.getNumber());
+    }
+    
+    @Test
+    public void testInvoiceProperlyPrintAddedProduct() {
+        invoice.addProduct(new TaxFreeProduct("Pilka", new BigDecimal("21.99")), 2);
+        String printedInvoice = invoice.printInvoice();
+        // tabel structure:
+        // name 15marks | quantity 10marks | net unit price 15marks | gross unit price 14 marks
+        Assert.assertTrue(printedInvoice.contains("   NAZWA       |  ILOSC   |  CENA NETTO   |  CENA BRUTTO "
+                + "n/Pilka          |   2 szt. |     21.99 PLN |     21.99 PLN"));
+    }
+    
+    @Test
+    public void testInvoiceProperlyPrintInvoiceSummary() {
+        invoice.addProduct(new DairyProduct("Maslo", new BigDecimal("5.49")), 3);
+        invoice.addProduct(new OtherProduct("Gazetka", new BigDecimal(9.99)));
+        String printedInvoice = invoice.printInvoice();
+        Assert.assertEquals(Character.getNumericValue((printedInvoice.charAt(printedInvoice.length()-1))), 4);
     }
 }
