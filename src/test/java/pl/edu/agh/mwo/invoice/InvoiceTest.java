@@ -135,4 +135,12 @@ public class InvoiceTest {
         String printedInvoice = invoice.printInvoice();
         Assert.assertEquals(4, Character.getNumericValue((printedInvoice.charAt(printedInvoice.length()-1))));
     }
+    
+    @Test
+    public void testInvoiceProductQuantitySummary() {
+        invoice.addProduct(new TaxFreeProduct("Monte", new BigDecimal("1.50")), 6);
+        invoice.addProduct(new DairyProduct("Papier toaletowy", new BigDecimal("12.99")));
+        invoice.addProduct(new OtherProduct("Samochod", new BigDecimal("100000")), 2);
+        Assert.assertEquals(9, invoice.countProductsQuantitySummary());
+    }
 }
