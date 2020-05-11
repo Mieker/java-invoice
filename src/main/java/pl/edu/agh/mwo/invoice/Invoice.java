@@ -76,4 +76,10 @@ public class Invoice {
 
         return invoiceToPrint;
     }
+
+    public Map<Product, Integer> getProducts() {
+        return products;
+    }
+    
+    
 }

@@ -3,6 +3,7 @@ package pl.edu.agh.mwo.invoice;
 import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
+import java.util.Map;
 
 import org.hamcrest.Matchers;
 import org.junit.Assert;
@@ -142,5 +143,21 @@ public class InvoiceTest {
         invoice.addProduct(new DairyProduct("Papier toaletowy", new BigDecimal("12.99")));
         invoice.addProduct(new OtherProduct("Samochod", new BigDecimal("100000")), 2);
         Assert.assertEquals(9, invoice.countProductsQuantitySummary());
+    }
+    
+    @Test
+    public void testInvoiceNotDuplicateProductsPositions() {
+        invoice.addProduct(new DairyProduct("Czekolada", new BigDecimal("2.89")), 2);
+        invoice.addProduct(new DairyProduct("Czekolada", new BigDecimal("2.89")));
+        invoice.addProduct(new DairyProduct("Czekolada", new BigDecimal("1.00")));
+        Assert.assertThat(1, Matchers.comparesEqualTo(invoice.getProducts().size()));
+    }
+    
+    @Test
+    public void testInvoiceProperlySumQuantityForProduct() {
+        invoice.addProduct(new OtherProduct("Michel", new BigDecimal("4.99")), 2);
+        invoice.addProduct(new OtherProduct("Michel", new BigDecimal("4.99")), 2);
+        Map.Entry<Product, Integer> firstProduct = invoice.getProducts().entrySet().iterator().next();
+        Assert.assertThat(4, Matchers.comparesEqualTo(firstProduct.getValue()));
     }
 }
