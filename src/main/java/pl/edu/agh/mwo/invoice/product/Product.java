@@ -65,21 +65,13 @@ public abstract class Product {
         } else if (!name.equals(other.name)) {
             return false;
         }
-        if (price == null) {
-            if (other.price != null) {
-                return false;
-            }
-        } else if (!price.equals(other.price)) {
+        if (!price.equals(other.price)) {
             return false;
         }
-        if (taxPercent == null) {
-            if (other.taxPercent != null) {
-                return false;
-            }
-        } else if (!taxPercent.equals(other.taxPercent)) {
+        if (!taxPercent.equals(other.taxPercent)) {
             return false;
         }
         return true;
     }
-    
+
 }
