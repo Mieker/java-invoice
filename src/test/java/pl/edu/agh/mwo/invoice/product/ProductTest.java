@@ -63,19 +63,10 @@ public class ProductTest {
     }
     
     @Test
-    public void testFuelCanisterPriceAndPriceWithTaxAndExciseOnRoadDay() {
-        FuelCanister.roadDayTaxExemption = true;
-        Product product = new FuelCanister("Benzyna 95", new BigDecimal("100.0"));
-        Assert.assertThat(new BigDecimal("100.0"), Matchers.comparesEqualTo(product.getPrice()));
-        Assert.assertThat(new BigDecimal("100.0"), Matchers.comparesEqualTo(product.getPriceWithTax()));
-    }
-    
-    @Test
     public void testFuelCanisterPriceWithTaxWithExcise() {
-        FuelCanister.roadDayTaxExemption = false;
         Product product = new FuelCanister("Olej napędowy", new BigDecimal("100.0"));
         Assert.assertThat(new BigDecimal("100.0"), Matchers.comparesEqualTo(product.getPrice()));
-        Assert.assertThat(new BigDecimal("123.56"), Matchers.comparesEqualTo(product.getPriceWithTax()));
+        Assert.assertThat(new BigDecimal("105.56"), Matchers.comparesEqualTo(product.getPriceWithTax()));
     }
     
     @Test
