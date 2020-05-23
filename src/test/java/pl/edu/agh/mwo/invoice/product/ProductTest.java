@@ -77,4 +77,12 @@ public class ProductTest {
         Assert.assertThat(new BigDecimal("100.0"), Matchers.comparesEqualTo(product.getPrice()));
         Assert.assertThat(new BigDecimal("123.56"), Matchers.comparesEqualTo(product.getPriceWithTax()));
     }
+    
+    @Test
+    public void testProductEqualsItself() {
+        Product product = new OtherProduct("Dętka", new BigDecimal("33.33"));
+        Product product2 = new OtherProduct("Opona", new BigDecimal("33.33"));
+        Assert.assertTrue(product.equals(product));
+        Assert.assertFalse(product.equals(product2));
+    }
 }
