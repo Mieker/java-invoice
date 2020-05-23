@@ -58,17 +58,10 @@ public abstract class Product {
             return false;
         }
         Product other = (Product) obj;
-        if (name == null) {
-            if (other.name != null) {
-                return false;
-            }
-        } else if (!name.equals(other.name)) {
+        if (!name.equals(other.name)) {
             return false;
         }
         if (!price.equals(other.price)) {
-            return false;
-        }
-        if (!taxPercent.equals(other.taxPercent)) {
             return false;
         }
         return true;

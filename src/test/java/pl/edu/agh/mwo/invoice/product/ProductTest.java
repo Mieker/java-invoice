@@ -93,9 +93,16 @@ public class ProductTest {
     }
     
     @Test
-    public void testProductsOfDriferentClassAreNotEquals() {
+    public void testProductsOfDifferentClassAreNotEquals() {
         Product product = new FuelCanister("Gaz LPG", new BigDecimal("33.33"));
         Product product2 = new BottleOfWine("Chateux", new BigDecimal("20.0"));
+        Assert.assertFalse(product.equals(product2));
+    }
+    
+    @Test
+    public void testProductsWithDifferentPriceAreNotEquals() {
+        Product product = new BottleOfWine("Don Perignon", new BigDecimal("100.00"));
+        Product product2 = new BottleOfWine("Don Perignon", new BigDecimal("4.50"));
         Assert.assertFalse(product.equals(product2));
     }
 }
