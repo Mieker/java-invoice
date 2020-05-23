@@ -149,8 +149,8 @@ public class InvoiceTest {
     public void testInvoiceNotDuplicateProductsPositions() {
         invoice.addProduct(new DairyProduct("Czekolada", new BigDecimal("2.89")), 2);
         invoice.addProduct(new DairyProduct("Czekolada", new BigDecimal("2.89")));
-        invoice.addProduct(new DairyProduct("Czekolada", new BigDecimal("1.00")));
-        Assert.assertThat(1, Matchers.comparesEqualTo(invoice.getProducts().size()));
+        invoice.addProduct(new DairyProduct("Czekolada", new BigDecimal("1.00")), 3);
+        Assert.assertThat(2, Matchers.comparesEqualTo(invoice.getProducts().size()));
     }
     
     @Test

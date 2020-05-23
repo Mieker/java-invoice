@@ -10,6 +10,15 @@ public class Invoice {
     static int lastNumber = 0;
     private Map<Product, Integer> products = new HashMap<Product, Integer>();
 
+    public int getNumber() {
+
+        return number;
+    }
+    
+    public Map<Product, Integer> getProducts() {
+        return products;
+    }
+    
     public Invoice() {
         this.number = lastNumber + 1;
         lastNumber = this.number;
@@ -23,7 +32,12 @@ public class Invoice {
         if (product == null || quantity <= 0) {
             throw new IllegalArgumentException();
         }
-        products.put(product, quantity);
+        if (getProducts().containsKey(product)) {
+            products.put(product, products.get(product) + quantity);
+        }
+        else {
+            products.put(product, quantity);
+        }
     }
 
     public BigDecimal getNetTotal() {
@@ -48,11 +62,6 @@ public class Invoice {
         return totalGross;
     }
 
-    public int getNumber() {
-
-        return number;
-    }
-    
     public int countProductsQuantitySummary() {
         int quantitySummary = 0;
         for (Product product : products.keySet()) {
@@ -77,9 +86,4 @@ public class Invoice {
         return invoiceToPrint;
     }
 
-    public Map<Product, Integer> getProducts() {
-        return products;
-    }
-    
-    
 }
