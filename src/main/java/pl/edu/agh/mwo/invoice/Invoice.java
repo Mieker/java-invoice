@@ -14,11 +14,11 @@ public class Invoice {
 
         return number;
     }
-    
+
     public Map<Product, Integer> getProducts() {
         return products;
     }
-    
+
     public Invoice() {
         this.number = lastNumber + 1;
         lastNumber = this.number;
@@ -34,8 +34,7 @@ public class Invoice {
         }
         if (getProducts().containsKey(product)) {
             products.put(product, products.get(product) + quantity);
-        }
-        else {
+        } else {
             products.put(product, quantity);
         }
     }
