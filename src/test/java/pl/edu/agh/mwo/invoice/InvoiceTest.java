@@ -140,16 +140,16 @@ public class InvoiceTest {
     @Test
     public void testInvoiceProductQuantitySummary() {
         invoice.addProduct(new TaxFreeProduct("Monte", new BigDecimal("1.50")), 6);
-        invoice.addProduct(new DairyProduct("Papier toaletowy", new BigDecimal("12.99")));
+        invoice.addProduct(new DairyProduct("Gouda", new BigDecimal("12.99")));
         invoice.addProduct(new OtherProduct("Samochod", new BigDecimal("100000")), 2);
         Assert.assertEquals(9, invoice.countProductsQuantitySummary());
     }
     
     @Test
     public void testInvoiceNotDuplicateProductsPositions() {
-        invoice.addProduct(new DairyProduct("Czekolada", new BigDecimal("2.89")), 2);
-        invoice.addProduct(new DairyProduct("Czekolada", new BigDecimal("2.89")));
-        invoice.addProduct(new DairyProduct("Czekolada", new BigDecimal("1.00")), 3);
+        invoice.addProduct(new DairyProduct("Gouda", new BigDecimal("2.89")), 2);
+        invoice.addProduct(new DairyProduct("Gouda", new BigDecimal("2.89")));
+        invoice.addProduct(new DairyProduct("Gouda", new BigDecimal("1.00")), 3);
         Assert.assertThat(2, Matchers.comparesEqualTo(invoice.getProducts().size()));
     }
     
@@ -160,4 +160,4 @@ public class InvoiceTest {
         Map.Entry<Product, Integer> firstProduct = invoice.getProducts().entrySet().iterator().next();
         Assert.assertThat(4, Matchers.comparesEqualTo(firstProduct.getValue()));
     }
-}
+ }
