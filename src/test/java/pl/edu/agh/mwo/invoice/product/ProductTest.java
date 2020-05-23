@@ -105,4 +105,13 @@ public class ProductTest {
         Product product2 = new BottleOfWine("Don Perignon", new BigDecimal("4.50"));
         Assert.assertFalse(product.equals(product2));
     }
+    
+    @Test
+    public void testProductHashCodeWorksProperly() {
+        Product product = new FuelCanister("Ropa", new BigDecimal("5.00"));
+        Product product2 = new FuelCanister("Ropa", new BigDecimal("5.00"));
+        int a = product.hashCode();
+        int b = product.hashCode();
+        Assert.assertTrue(a==b);
+    }
 }
